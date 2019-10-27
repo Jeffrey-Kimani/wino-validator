@@ -1,7 +1,7 @@
 const express = require('express')
 
 var app = express();
-var validator = require('./modules/validator/validator')
+var validator = require('.')
 
 app.get('/', function (req, res, next) {
 

@@ -1,35 +1,82 @@
-// var validator = require('./modules/validator/validate')
-var validator = require('./modules/validator/validator')
-
-
-// var errors = JSON.stringify(validator.validate([
+const decoder = require('./validation-decoder')
+// validate([
 //     {
-//         field: 'email',
-//         data: 'geoffreykariithi@gmail',
-//         rules: 'required|char_between: 50, 52|email'
+//         field: "email", 
+//         data: "geoffrey.kimani@sbsafrica.com", 
+//         rules: "required|email|char_between:3,150"
 //     },
 //     {
-//         field: 'mobile number',
-//         data: '072398',
-//         rules: 'required|digits: 7,10'
+//         field: "name", 
+//         data: "geoffrey.kimani", 
+//         rules: "required|alpha_dash|char_between:3,150"
 //     },
-// ]),null,2);
+// ])
+// validate([
+//     ["email", "geoffrey.kimani@sbsafrica.com", "required|email|char_between:3,150"],
+//     ["name", "Geoffrey Kimani", "required|alpha_dash|char_between:3,150"],
+// ]);
 
-var errors = JSON.stringify(validator._validateArray([
-    ['email', 'geoffreykariithi@gmail', 'required|char_between: 50, 52|email'],
-    ['mobile number', '072398', 'required|digits: 7,10']
-]), null, 2);
+module.exports = {
+    /**
+     * 
+     * @param {Array} validationItems
+     */
+    validate: function (validationItems) {
+        return decoder.processFields(validationItems)
+    },
+    validateArray: function (validationItems) {
+        var itemValidation = []
 
-// var errors = JSON.stringify(validator._validateArray([
-//     ['ip', '2001:db8:0000:1:1:1:1:1', 'ip: 4'],
-//     // ['ip', '123.900.123.25', 'required|ip:4']
-// ]), null, 2);
+        for (let i = 0; i < validationItems.length; i++) {
+            const item = validationItems[i];
+            
+            var oneItem = {
+                field: item[0],
+                data: item[1],
+                rules: item[2]
+            }
+            itemValidation.push(oneItem)
+        }
+        return decoder.processFields(itemValidation)
+    },
+    // validate: function (res,validationItems) {
+    //     var errors = decoder.processFields(validationItems)
 
-console.log(errors)
-// validator.validate([{
-//     field: 'email',
-//     data: '      ',
-//     rules: 'required'
-// }]).forEach(message => {
-//     console.log(message.message[0])
-// });
+    //     if (errors.length > 0) {
+    //         try {
+    //             res.status(422).send({
+    //                 results: decoder.processFields(validationItems)
+    //             })
+    //             return false
+    //         }catch(warnings){}
+    //     }else{
+    //         return true
+    //     }
+    // },
+    // validateArray: async function (res,validationItems) {
+    //     var itemValidation = []
+
+    //     for (let i = 0; i < validationItems.length; i++) {
+    //         const item = validationItems[i];
+            
+    //         var oneItem = {
+    //             field: item[0],
+    //             data: item[1],
+    //             rules: item[2]
+    //         }
+    //         itemValidation.push(oneItem)
+    //     }
+    //     var errors = decoder.processFields(itemValidation)
+
+    //     if (errors.length > 0){
+    //         try {
+    //             res.status(422).send({
+    //                 results: decoder.processFields(itemValidation)
+    //             })
+    //             return false
+    //         }catch(warnings){}
+    //     }else{
+    //         return true
+    //     }
+    // }
+}

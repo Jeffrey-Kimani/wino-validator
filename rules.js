@@ -1,5 +1,5 @@
 const fs = require('fs');
-let customMessages = JSON.parse(fs.readFileSync('modules/validator/messages.json'))
+let customMessages = JSON.parse(fs.readFileSync('./messages.json'))
 const validator = require('./validate')
 const npmValidator = require('validator');
 
