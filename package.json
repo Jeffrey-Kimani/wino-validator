@@ -1,0 +1,30 @@
+{
+  "name": "validator-laravel",
+  "version": "1.0.0",
+  "description": "A javascript validation library simmilar to laravel's",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha tests/**/*.test.js",
+    "tst": "mocha tests/chain/**/*.test.js",
+    "start": "node index"
+  },
+  "keywords": [
+    "validator",
+    "validation",
+    "validation-laravel",
+    "validation-chain",
+    "validation-string",
+    "validation-express",
+    "validation-node"
+  ],
+  "author": "Geoffrey Kimani",
+  "license": "ISC",
+  "dependencies": {
+    "validator": "^10.3.0"
+  },
+  "devDependencies": {
+    "expect": "^23.6.0",
+    "express": "^4.17.1",
+    "mocha": "^5.2.0"
+  }
+}
