@@ -6,6 +6,7 @@ let customMessages = {
    equals: "the '{0}' field should equal {1}",
    alpha: "the '{0}' field should only contain alphabetic characters of the locale {1}",
    alpha_numeric: "the '{0}' field can only contain characters and integers",
+   numeric: "the '{0}' field can only contain numeric characters",
    ascii: "the '{0}' field should contain only ascii characters",
    base_64: "the '{0}' field should be base 64",
    boolean: "the '{0}' field should be boolean",
@@ -70,7 +71,7 @@ let rules = {
    },
    'contains': (rule, field, data) => {
       var params = rule.params[0]
-
+      
       if (!npmValidator.contains(data, [params])) {
          return parseMessage(customMessages.contains, [field, params])
       }
@@ -468,12 +469,6 @@ let rules = {
    'url': (rule, field, data) => {
       if (!npmValidator.isURL(data, { allow_underscores: true })) {
          return parseMessage(customMessages.url, [field])
-      }
-   },
-
-   'uppercase': (rule, field, data) => {
-      if (!npmValidator.isUppercase(data)) {
-         return parseMessage(customMessages.uppercase, [field])
       }
    },
 

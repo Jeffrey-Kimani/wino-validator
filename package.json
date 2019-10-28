@@ -1,6 +1,6 @@
 {
   "name": "wino-validator",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "A javascript validation library simmilar to laravel's",
   "main": "index.js",
   "scripts": {
