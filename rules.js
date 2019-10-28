@@ -64,7 +64,7 @@ let customMessages = {
 
 let rules = {
    'required': (rule, field, data) => {
-      if (data === undefined || data === null || data.length === 0 || validator.isEmpty(data)) {
+      if (data === 'undefined' || data === 'null' || validator.isEmpty(data)) {
          return parseMessage(customMessages.required, [field])
       }
    },
