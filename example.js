@@ -15,7 +15,7 @@ var validator = require('./index')
 // ]),null,2);
 
 var errors = JSON.stringify(validator.validateArray([
-    ['email', 'geoffreykariithi@gmail', 'required|char_between: 50, 52|email'],
+    ['email', undefined, 'required|char_between: 50, 52|email'],
     ['mobile number', '072398', 'required|digits: 7,10']
 ]), null, 2);
 
