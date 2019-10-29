@@ -76,18 +76,6 @@ function RuleDoesNotExist(value) {
     };
 }
 
-function MissingParameter(rule) {
-    this.toString = function () {
-        return `the rule: ${rule} has missing parameters`
-    };
-}
-
-function InvalidParameter(rule, parameter) {
-    this.toString = function () {
-        return `the ${parameter} parameter(s) provided for rule ${rule} is invalid`
-    };
-}
-
 module.exports = {
     processFields
 }

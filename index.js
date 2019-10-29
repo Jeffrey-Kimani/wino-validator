@@ -6,11 +6,11 @@ module.exports = {
      * 
      * @param {Array} validationItems
      */
-    validate: function (validationItems) {
+    validateObject: function (validationItems) {
         return decoder.processFields(validationItems)
     },
-    
-    validateArray: function (validationItems) {
+
+    validate: function (validationItems) {
         var itemValidation = []
 
         for (let i = 0; i < validationItems.length; i++) {
@@ -28,6 +28,7 @@ module.exports = {
             }
             itemValidation.push(oneItem)
         }
+
         return decoder.processFields(itemValidation)
     }
 }
