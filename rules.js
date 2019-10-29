@@ -591,7 +591,7 @@ let rules = {
          if (!validator.numeric(data)) {
             return parseMessage(customMessages.numeric, [field])
          } else {
-            if (!validator.digitsBetween(data, param1, param2)) {
+            if (!validator.digitsBetween(data, param1, param2+1)) {
                return parseMessage(customMessages.digits, [field, param1, param2])
             }
          }
